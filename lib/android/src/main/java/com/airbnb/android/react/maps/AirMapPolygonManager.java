@@ -78,6 +78,11 @@ public class AirMapPolygonManager extends ViewGroupManager<AirMapPolygon> {
         view.setZIndex(zIndex);
     }
 
+    @ReactProp(name = "tappable")
+    public void setTappable(AirMapPolygon view, boolean tappable) {
+        view.setTappable(tappable);
+    }
+
     @Override
     @Nullable
     public Map getExportedCustomDirectEventTypeConstants() {

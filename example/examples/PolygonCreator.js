@@ -148,6 +148,7 @@ class PolygonCreator extends React.Component {
               holes={this.state.editing.holes}
               strokeColor="#000"
               fillColor="rgba(255,0,0,0.5)"
+              tappable={false}
               strokeWidth={1}
             />
           )}

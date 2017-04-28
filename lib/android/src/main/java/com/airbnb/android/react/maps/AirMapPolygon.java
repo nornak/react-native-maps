@@ -24,6 +24,7 @@ public class AirMapPolygon extends AirMapFeature {
     private float strokeWidth;
     private boolean geodesic;
     private float zIndex;
+    private boolean clickable;
 
     public AirMapPolygon(Context context) {
         super(context);
@@ -95,6 +96,14 @@ public class AirMapPolygon extends AirMapFeature {
         }
     }
 
+
+    public void setTappable(boolean tappable){
+        clickable = tappable;
+        if (polygon != null) {
+            polygon.setClickable(tappable);
+        }
+    }
+
     public PolygonOptions getPolygonOptions() {
         if (polygonOptions == null) {
             polygonOptions = createPolygonOptions();
@@ -110,6 +119,7 @@ public class AirMapPolygon extends AirMapFeature {
         options.strokeWidth(strokeWidth);
         options.geodesic(geodesic);
         options.zIndex(zIndex);
+        options.clickable(clickable);   
         for(int i = 0; i < holes.size(); i++){
             options.addHole(holes.get(i));
         }
@@ -124,7 +134,6 @@ public class AirMapPolygon extends AirMapFeature {
     @Override
     public void addToMap(GoogleMap map) {
         polygon = map.addPolygon(getPolygonOptions());
-        polygon.setClickable(true);
     }
 
     @Override
